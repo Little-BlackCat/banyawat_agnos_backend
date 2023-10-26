@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  go-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    restart: always
+    depends_on:
+      - db
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:80
+    depends_on:
+      - go-service
+
+  db:
+    image: postgres:latest
+    restart: always
+    volumes:
+      - db_data:/var/lib/postgres/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-h", "db", "-p", "5432", "-U", "postgres"]
+      interval: 1s
+      timeout: 5s
+      retries: 5
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+
+volumes:
+  db_data:
