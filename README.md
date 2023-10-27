@@ -3,7 +3,7 @@
 1. **Clone the Repository**: Start by cloning the project repository from Git:
 
     ```shell
-    git clone git@github.com:Little-BlackCat/check-password.git
+    git clone git@github.com:Little-BlackCat/banyawat_agnos_backend.git
     ```
 
 2. **Run Docker Compose**: Navigate to the project directory and run Docker Compose to start the services (nginx, Golang service, and PostgreSQL):
