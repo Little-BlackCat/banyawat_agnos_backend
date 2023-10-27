@@ -21,7 +21,7 @@
 4. **Check the Database**: If you want to check the PostgreSQL database, you can access it using the following command:
 
     ```shell
-    docker exec -it "<container name>" psql -U postgres -d postgres
+    docker exec -it check-password-db-1 psql -U postgres -d postgres
     ```
 
     Once you're inside the PostgreSQL shell, you can retrieve data from the `password_log` table:
